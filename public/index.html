@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Sitecore CDP Tester</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="text/javascript">
+
+      // load _boxever_settings from local storage
+      const settingLocalStorageKey = "tracking_setting";
+      const settingJsonString = localStorage.getItem(settingLocalStorageKey);
+      const settingJson = JSON.parse(settingJsonString);
+      console.log("===== load savedBoxeverSetting =====");
+      console.log("settingJson:", settingJson);
+
+      // only executing tag when setting was set in localstorage
+      if(settingJson) {
+        var _boxeverq = _boxeverq || [];
+        var _boxever_settings = {...settingJson};
+        // NOTE: // currently not support these parameters below in this debug tool
+        delete _boxever_settings["web_flow_target"];
+        delete _boxever_settings["web_flow_config"];
+        console.log("===== _boxever_settings =====");
+        console.log("_boxever_settings:", _boxever_settings);
+        // Import the Boxever library asynchronously
+        (function() {
+          var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+          s.src = `https://d1mj578wat5n4o.cloudfront.net/boxever-${settingJson.javascriptLibraryVersion}.min.js`;
+          var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+      }
+    </script>
+  </body>
+</html>
