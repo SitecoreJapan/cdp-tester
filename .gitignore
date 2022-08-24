@@ -9,7 +9,7 @@
 /coverage
 
 # production
-/build
+/buildq
 
 # misc
 .DS_Store
@@ -24,3 +24,8 @@ yarn-error.log*
 
 # ignore jetbrains editor setting
 .idea/*
+
+# Docker related
+Dockerfile
+nginx/*
+docker_container_run_command.txt

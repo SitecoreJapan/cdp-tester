@@ -8,8 +8,8 @@ let initValue = {
     cookie_domain: getDomain(),
     javascriptLibraryVersion: "1.4.9",
     pointOfSale: "",
-    web_flow_target: "",
-    web_flow_config: {async: false, defer: false}
+    web_flow_target: "https://d35vb5cccm4xzp.cloudfront.net",
+    web_flow_config: {async: true, defer: true}
 };
 let savedTrackingSetting = loadJson(STORAGE_KEY_TRACK_SETTING);
 if(savedTrackingSetting) {

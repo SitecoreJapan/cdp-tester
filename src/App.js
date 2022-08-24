@@ -6,7 +6,8 @@ import {
     FingerPrintIcon,
     ShoppingCartIcon,
     PencilIcon,
-    CogIcon
+    CogIcon,
+    CursorClickIcon
 } from '@heroicons/react/outline'
 import StandardEvent from "./menus/StandardEvent";
 import OrderEvent from "./menus/OrderEvent";
@@ -18,6 +19,8 @@ import {appSettingReducer, appSettingInitialState} from "./reducers/AppSettingRe
 import getAppContext from "./context/AppContext";
 import {loadJson} from "./util/StorageUtil";
 import Test from "./menus/Test";
+import ExperienceTest from "./components/ExperienceTest";
+import ExperienceTestPage from "./components/ExperienceTestPage";
 
 function App() {
 
@@ -38,15 +41,17 @@ function App() {
     let selectedLink = "home";
     let currentPath = window.location.pathname;
     if(/\/standard_ev/.test(currentPath)) {
-        selectedLink = "standard_ev"
+        selectedLink = "standard_ev";
     } else if(/\/identity_ev/.test(currentPath)) {
-        selectedLink = "identity_ev"
+        selectedLink = "identity_ev";
     } else if(/\/order_ev/.test(currentPath)) {
-        selectedLink = "order_ev"
+        selectedLink = "order_ev";
     } else if(/\/custom_ev/.test(currentPath)) {
-        selectedLink = "custom_ev"
+        selectedLink = "custom_ev";
     } else if(/\/setting/.test(currentPath)) {
-        selectedLink = "setting"
+        selectedLink = "setting";
+    } else if(/\/experience/.test(currentPath)) {
+        selectedLink = "experience";
     }
     const [navigation, setNavigation] = useState(
         {
@@ -107,6 +112,10 @@ function App() {
                                     <PencilIcon className={getIconClass(navigation.selectedLink === "custom_ev")}/>
                                     Custom Event
                                 </Link>
+                                <Link to="/experience" className={getLinkClass(navigation.selectedLink === "experience")} data-name="experience" onClick={onClickLink}>
+                                    <CursorClickIcon className={getIconClass(navigation.selectedLink === "experience")}/>
+                                    Experience Test
+                                </Link>
                                 <Link to="/setting" className={getLinkClass(navigation.selectedLink === "setting")} data-name="setting" onClick={onClickLink}>
                                     <CogIcon className={getIconClass(navigation.selectedLink === "setting")}/>
                                     Setting
@@ -127,7 +136,12 @@ function App() {
                             <Route exact path="/identity_ev" element={<IdentityEvent/>}></Route>
                             <Route exact path="/order_ev" element={<OrderEvent/>}></Route>
                             <Route exact path="/custom_ev" element={<CustomEvent/>}></Route>
+                            <Route exact path="/experience" element={<ExperienceTest/>}></Route>
                             <Route exact path="/setting" element={<Setting/>}></Route>
+                            <Route path="/:relative_path" element={<ExperienceTestPage/>}></Route>
+                            <Route path="/:relative_path/:child" element={<ExperienceTestPage/>}></Route>
+                            <Route path="/:relative_path/:child/:grandchild" element={<ExperienceTestPage/>}></Route>
+                            <Route path="/:relative_path/:child/:grandchild/:great_grandchild" element={<ExperienceTestPage/>}></Route>
                             {/*<Route exact path="/test" element={<Test/>}></Route>*/}
                         </Routes>
                     </main>

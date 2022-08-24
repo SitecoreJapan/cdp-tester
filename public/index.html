@@ -32,10 +32,19 @@
       // only executing tag when setting was set in localstorage
       if(settingJson) {
         var _boxeverq = _boxeverq || [];
-        var _boxever_settings = {...settingJson};
-        // NOTE: // currently not support these parameters below in this debug tool
-        delete _boxever_settings["web_flow_target"];
-        delete _boxever_settings["web_flow_config"];
+        // var _boxever_settings = {...settingJson};
+        // // NOTE: // currently not support these parameters below in this debug tool
+        // // delete _boxever_settings["web_flow_target"];
+        // // delete _boxever_settings["web_flow_config"];
+        var _boxever_settings = {
+          client_key: 'sndbxfifwzvnqlhyawzdyhiqfxfrpywf', // Replace with your client key
+          target: 'https://api-ap-southeast-2-production.boxever.com/v1.2', // Replace with your API target endpoint specific to your data center region
+          cookie_domain: '.sccdp-test.com', // Replace with the top level cookie domain of the website that is being integrated e.g ".example.com" and not "www.example.com"
+          javascriptLibraryVersion: '1.4.9', // Replace with the latest Boxever JavaScript library version
+          pointOfSale: 'yy-test', // Replace with the same point of sale configured in system settings
+          web_flow_target: 'https://d35vb5cccm4xzp.cloudfront.net', // Replace with path for the Amazon CloudFront CDN for Sitecore Personalize
+          web_flow_config: {async:false,defer:false}
+        };
         console.log("===== _boxever_settings =====");
         console.log("_boxever_settings:", _boxever_settings);
         // Import the Boxever library asynchronously
