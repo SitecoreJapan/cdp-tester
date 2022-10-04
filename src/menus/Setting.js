@@ -140,7 +140,6 @@ function Setting() {
                                 className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                                 <label className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
                                     <span>Web Flow Target</span><br/>
-                                    <span className="text-red-500">* currently not used</span>
                                 </label>
                                 <div className="mt-1 sm:mt-0 sm:col-span-2">
                                     <input
@@ -166,7 +165,6 @@ function Setting() {
                                                     className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
                                                     id="label-email">
                                                     <span>Web Flow Config</span><br/>
-                                                    <span className="text-red-500">* currently not used</span>
                                                 </div>
                                             </div>
                                             <div className="mt-4 sm:mt-0 sm:col-span-2">
